@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<script> 
+  function createPopupWin(pageURL, pageTitle, popupWinWidth, popupWinHeight) { 
+    var left = (screen.width - popupWinWidth) / 2; 
+    var top = (screen.height - popupWinHeight) / 4; 
+          
+    var myWindow = window.open(pageURL, pageTitle, 'resizable=yes, width=' + popupWinWidth + ', height=' + popupWinHeight + ', top=' + top + ', left=' + left); 
+  } 
+</script> 
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Department</th>
+    <th>Designation</th>
+    <th>Photo</th>
+  </tr>
+    {% for instance in object_list %}
+      <tr>
+      <td> <a href='{{ instance.get_absolute_url }}' target = 'popup' onclick="createPopupWin('{{ instance.get_absolute_url }}', 'abc', 1200, 600);"> {{ instance.faculty_name }} </a> </td>
+      <td> {{ instance.department }} </td>
+      <td> {{ instance.designation }} </td>
+      <td> <img src="{{ instance.image.url }}" width="100"> </td>
+  </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+
+{% endblock %}

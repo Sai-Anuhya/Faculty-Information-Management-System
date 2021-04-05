@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>        
+        body, html{
+        height: 100%;
+        margin: 0;
+        }
+        body {
+            content: '';
+            position: fixed;
+            width: 100vw;
+            height: 100vh;            
+            background-image: url('{% static "css/bg2.jpg" %}');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+    <title>Faculty Information Management System</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+</head>
+<body>
+<dir class="form-container">
+    <div class="user-img"></div>
+    <form method="POST">
+    {% csrf_token %}
+    <ul class="list">
+        <li><h2>Faculty Login</h2></li>
+        <p style="color:red"> {{ error }}</p>
+        <li><input type="text" name="username" id="username" placeholder="Username" required></li>
+        <li><input type="password" name="password" placeholder="Password" required></li>
+        <li><button type="submit">Login</button></li>
+    </ul>
+</form>
+</dir>
+</body>
+</html>
+
+<!--
+    body:before {
+            content: '';
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('{% static "css/bg4.jpg" %}');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            -webkit-filter: blur(10px);
+            -moz-filter: blur(10px);
+            -o-filter: blur(10px);
+            -ms-filter: blur(10px);
+            filter: blur(10px);
+
+        }
+        -->

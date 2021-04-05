@@ -1,0 +1,281 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Faculty Information Management System</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<style>
+.bgcard {
+  border-radius: 10px;
+  border-color: #BDB9B9;
+  background-color: #d3d4cf;
+}
+.cardimage {
+  width: 250px;
+  height: 250px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.cardtext {
+  margin-left: 10px;
+}
+.detailsright {
+  /*position: relative; */
+  text-align: right;
+  margin-top: -450px;
+  margin-right: 400px;
+}
+.detailsrightpersonal {
+ /* position: relative; */
+  text-align: right;
+  margin-right: 420px;
+}
+.detailsleft {
+  /*position: relative; */
+  text-align: left;
+  margin-left: 370px;
+}
+body {
+    content: '';            
+            width: 100vw;
+            height: 100vh;           
+            background-image: url('{% static "css/bg7.png" %}');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+  }
+
+@media (max-width: 1000px) {
+  .detailsright {
+    /*position: relative; */
+    text-align: right;
+    margin-top: -450px;
+    margin-right: 150px;
+  }
+  .detailsrightpersonal {
+    /* position: relative; */
+    text-align: right;
+    margin-right: 170px;
+  }
+  .detailsleft {
+    /*position: relative; */
+    text-align: left;
+    margin-left: 370px;
+  }
+  body {
+    content: '';            
+            width: 100vw;
+            height: 100vh;           
+            background-image: url('{% static "css/bg7.png" %}');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+  }
+}
+</style>
+</head>
+<body>
+  <br><br>
+  <div class="container">
+  <div class="card bgcard" style="width:290px">
+    <img class="card-img-top text-center cardimage" src="{{ object.image.url }}" alt="Card image">
+    <div class="card-body cardtext">
+      <h4 class="card-title"> {{ object.title }}. {{ object.faculty_name }}</h4>
+      <h6 class="card-title"> Department: {{ object.department }}</h6>
+      <p class="card-text"> Phone: {{ object.mobile_No }} <br> Email: {{ object.email_id }} </p>
+    </div>
+  </div>
+  </div>
+  <div class="container">
+    <h4 class="detailsright"> Academic details: </h4>
+    <ul class="detailsleft">
+      <li> <h6>UG Percentage: {{ object.ug_percentage }}</h6></li>
+      <li><h6>UG Award Year: {{ object.ug_award_year }}</h6></li>
+      <li><h6>PG Percentage: {{ object.pg_percentage }}</h6></li>
+      <li><h6>PG Award Year: {{ object.pg_award_year }}</h6></li>
+      <li><h6>PHD Award Year: {{ object.phd_award_year }}</h6></li>
+    </ul>  
+    <br>
+
+    <h4 class="detailsrightpersonal"> Personal details: </h4>
+    <ul class="detailsleft">
+      <li> <h6>Aadhar Number: {{ object.aadhar_No }}</h6></li>
+      <li><h6>PAN Number: {{ object.pan_No }}</h6></li>
+      <li><h6>Date of Birth: {{ object.date_of_birth }}</h6></li>
+      <li><h6>Date of Joining: {{ object.date_of_joining }}</h6></li>
+      <li><h6>Date of Relieving: {{ object.date_of_relieving }}</h6></li>
+    </ul> <br> 
+
+    <dl class="detailsleft">
+      <dt>-> Number of Papers Published: {{ object.No_of_papers_published }} </dt>
+      <dt>-> Number of Books Published: {{ object.No_of_books_published }} </dt>
+      <dt>-> Number of Paytents: {{ object.No_of_paytents }} </dt>
+      <dt>-> Number of R&D Projects: {{ object.No_of_rnd_projects }} </dt>
+      <dt>-> Number of PHD Guides: {{ object.No_of_phd_guides }} </dt>
+    </dl>
+
+  </div>
+
+<!-- table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+
+th {
+  background-color: #1ad1ff;
+}
+
+td {
+  background-color: #b3e0ff;
+} -->
+<!-- <p> <img src="{{ object.image.url }}" width="240" align="right"> </p>
+
+<table style="width:70%">
+  <tr>
+    <th>Name</th>
+    <td> {{ object.faculty_name }} </td>
+  </tr>
+  <tr>
+    <th>Title</th>
+    <td>{{ object.title }}</td>
+  </tr>
+  <tr>
+    <th>Designation</th>
+    <td>{{ object.designation }}</td>
+  </tr>
+  <tr>
+    <th>Department</th>
+    <td>{{ object.department }}</td>
+  </tr>
+  <tr>
+    <th>Department ID</th>
+    <td>{{ object.dept_id }}</td>
+  </tr>
+  <tr>
+    <th>AICTE ID</th>
+    <td>{{ object.AICTE_id }}</td>
+  </tr>
+  <tr>
+    <th>Mobile Number</th>
+    <td>{{ object.mobile_No }}</td>
+  </tr>
+  <tr>
+    <th>Email ID</th>
+    <td>{{ object.email_id }}</td>
+  </tr>
+  <tr>
+    <th>Aadhar Number</th>
+    <td>{{ object.aadhar_No }}</td>
+  </tr>
+  <tr>
+    <th>Pan Number</th>
+    <td>{{ object.pan_No }}</td>
+  </tr>
+  <tr>
+    <th>UG Percentage</th>
+    <td>{{ object.ug_percentage }}</td>
+  </tr>
+  <tr>
+    <th>UG Award Year</th>
+    <td>{{ object.ug_award_year }}</td>
+  </tr>
+  <tr>
+    <th>PG</th>
+    <td>{{ object.pg }}</td>
+  </tr>
+  <tr>
+    <th>PG Percentage</th>
+    <td>{{ object.pg_percentage }}</td>
+  </tr>
+  <tr>
+    <th>PG Award Year</th>
+    <td>{{ object.pg_award_year }}</td>
+  </tr>
+  <tr>
+    <th>PHD Award Year</th>
+    <td>{{ object.phd_award_year }}</td>
+  </tr>
+  <tr>
+    <th>Ratified</th>
+    <td>{{ object.ratified }}</td>
+  </tr>
+  <tr>
+    <th>Number of Papers Published</th>
+    <td>{{ object.No_of_papers_published }}</td>
+  </tr>
+  <tr>
+    <th>Number of Books Published</th>
+    <td>{{ object.No_of_books_published }}</td>
+  </tr>
+  <tr>
+    <th>Number of Paytents</th>
+    <td>{{ object.No_of_paytents }}</td>
+  </tr>
+  <tr>
+    <th>Number of RND Projects</th>
+    <td>{{ object.No_of_rnd_projects }}</td>
+  </tr>
+  <tr>
+    <th>Number of PHD Guides</th>
+    <td>{{ object.No_of_phd_guides }}</td>
+  </tr>
+  <tr>
+    <th>Date of Birth</th>
+    <td>{{ object.date_of_birth }}</td>
+  </tr>
+  <tr>
+    <th>Date of Joining</th>
+    <td>{{ object.date_of_joining }}</td>
+  </tr>
+  <tr>
+    <th>Date of Relieving</th>
+    <td>{{ object.date_of_relieving }}</td>
+  </tr>
+</table> -->
+
+</body>
+</html>
+
+
+
+
+<!--
+<b>Name                           : </b>{{ object.faculty_name }} <br>
+<b>Title                          : </b>{{ object.title }} <br>
+<b>Designation                    : </b>{{ object.designation }}<br>
+<b>Department                     : </b>{{ object.department }}<br>
+<b>Department ID                  : </b>{{ object.dept_id }}<br>
+<b>AICTE ID                       : </b>{{ object.AICTE_id }}<br>
+<b>Mobile Number                  : </b>{{ object.mobile_No }}<br>
+<b>Email ID                       : </b>{{ object.email_id }}<br>
+<b>Aadhar Number                  : </b>{{ object.aadhar_No }}<br>
+<b>Pan Number                     : </b>{{ object.pan_No }}<br>
+<b>UG Percentage                  : </b>{{ object.ug_percentage }}<br>
+<b>UG Award Year                  : </b>{{ object.ug_award_year }}<br>
+<b>PG                             : </b>{{ object.pg }}<br>
+<b>PG Percentage                  : </b>{{ object.pg_percentage }}<br>
+<b>PG Award Year                  : </b>{{ object.pg_award_year }}<br>
+<b>PHD Award Year                 : </b>{{ object.phd_award_year }}<br>
+<b>Ratified                       : </b>{{ object.ratified }}<br>
+<b>Number of Papers Published     : </b>{{ object.No_of_papers_published }}<br>
+<b>Number of Books Published      : </b>{{ object.No_of_books_published }}<br>
+<b>Number of Paytents             : </b>{{ object.No_of_paytents }}<br>
+<b>Number of RND Projects         : </b>{{ object.No_of_rnd_projects }}<br>
+<b>Number of PHD Guides           : </b>{{ object.No_of_phd_guides }}<br>
+<b>Date of Birth                  : </b>{{ object.date_of_birth }}<br>
+<b>Date of Joining                : </b>{{ object.date_of_joining }}<br>
+<b>Date of Relieving              : </b>{{ object.date_of_relieving }}<br>
+
+-->

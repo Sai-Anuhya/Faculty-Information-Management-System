@@ -1,0 +1,254 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Faculty Information Management System</title>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #b3e0ff;
+}
+
+tr:nth-child(odd) {
+  background-color: #b3e0ff;
+}
+
+th {
+  background-color: #1ad1ff;
+}
+
+h1 {
+  margin: 0px;
+}
+
+h4 {
+  margin: 0px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  background-color: #99ff99;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+li a.active {
+  color: white;
+  background-color: #4CAF50;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+.abc {
+  display: inline;
+}
+
+.logout input {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background-color: #99ff99;
+  display: block;
+  color: #666;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+</style>
+<br>
+<div>
+  <a href="https://www.facebook.com/svecwcollege/"><img src="{% static 'css/f1.jpg' %}"  height="30" width="30" hspace="05" style="float:left;width:10;height:10;">
+  
+  <a href="https://www.university.youth4work.com/svecw_shri-vishnu-engineering-college-for-women"><img src="{% static 'css/t1.jpg' %}"  height="30" width="30" hspace="05" style="float:left;width:10;height:10;">
+  
+  <a href="https://www.linkedin.com/school/shri-vishnu-engineering-college-for-women/about/"><img src="{% static 'css/l1.jpg' %}"  height="30" width="30" hspace="05" style="float:left;width:10;height:10;">
+  
+  <a href="https://www.instagram.com/vishnu_society_bhimavaram/?hl=en"><img src="{% static 'css/i1.jpg' %}"  height="30" width="30" hspace="05" style="float:left;width:10;height:10;">
+
+<div class="abc">
+<a href="http://www.svecw.edu.in/"><img src="{% static 'css/v2.jpg' %}"  style="float:right;width:100;height:50;"> </a>
+<a href="http://www.svecw.edu.in/"><h1 style="color: #8f246b" align="right" margin=0> </style> SVECW </h1></a>
+
+<h4 style="color: #8f246b" align="right" margin=0><a href="http://www.svecw.edu.in/"> Shri Vishnu Engineering College <br> For Women  (Autonomous)</a> </h4>
+</div>
+</div>
+<br>
+
+</head>
+<body>
+
+
+<ul>
+  <li><a class="active" href="http://127.0.0.1:8000/faculty/home/">Home</a></li>
+  <li><a href="http://www.svecw.edu.in/index.php/about-us/about-svecw">About Us</a></li>
+  <li><a href="http://www.svecw.edu.in/index.php/contactus">Contact Us</a></li>
+  <div  class="logout">
+    <form method = "POST" action='/logout/'> {% csrf_token %}
+      <li style="float: right;"><input type="submit" value="Logout"></li>
+    </form>
+  </div>
+  
+</ul>
+<br>
+<table>
+  <tr>
+    <th>Details</th>
+    <th>SVECW</th>
+    <th>EEE</th>
+    <th>ECE</th>
+    <th>CSE</th>
+    <th>IT</th>
+    <th>ME</th>
+    <th>CE</th>
+    <th>BS</th>
+    <th>MBA</th>
+  </tr>
+  <tr>
+    <td><i><b>Total Faculty</b></i></td>
+    <td><a href= '/faculty/'>{{ total }}</a></td>
+    <td><a href= '/faculty/eee/'>{{ eee }}</a></td>
+    <td><a href= '/faculty/ece/'>{{ ece }}</a></td>
+    <td><a href= '/faculty/cse/'>{{ cse }}</a></td>
+    <td><a href= '/faculty/it/'>{{ it }}</a></td>
+    <td><a href= '/faculty/mec/'>{{ mec }}</a></td>
+    <td><a href= '/faculty/civ/'>{{ civ }}</a></td>
+    <td><a href= '/faculty/bs/'>{{ bs }}</a></td>
+    <td><a href= '/faculty/mba/'>{{ mba }}</a></td>
+  </tr>
+  <tr>
+    <td><i><b>Doctorates</b></i></td>
+    <td><a href='/faculty/doctorates/'>{{ doctorates }} </a></td>
+    <td><a href= '/faculty/doctorates/eee/'>{{ doctorates_eee }}</a></td>
+    <td><a href= '/faculty/doctorates/ece/'>{{ doctorates_ece }}</a></td>
+    <td><a href= '/faculty/doctorates/cse/'>{{ doctorates_cse }}</a></td>
+    <td><a href= '/faculty/doctorates/it/'>{{ doctorates_it }}</a></td>
+    <td><a href= '/faculty/doctorates/mec/'>{{ doctorates_mec }}</a></td>
+    <td><a href= '/faculty/doctorates/civ/'>{{ doctorates_civ }}</a></td>
+    <td><a href= '/faculty/doctorates/bs/'>{{ doctorates_bs }}</a></td>
+    <td><a href= '/faculty/doctorates/mba/'>{{ doctorates_mba }}</a></td>
+  </tr>
+  <tr>
+   <td><i><b>Professors</b></i></td>
+    <td> <a href= '/faculty/professors/'>{{ professors }}</a></td>
+    <td><a href= '/faculty/professors/eee/'>{{ professors_eee }}</a></td>
+    <td><a href= '/faculty/professors/ece/'>{{ professors_ece }}</a></td>
+    <td><a href= '/faculty/professors/cse/'>{{ professors_cse }}</a></td>
+    <td><a href= '/faculty/professors/it/'>{{ professors_it }}</a></td>
+    <td><a href= '/faculty/professors/mec/'>{{ professors_mec }}</a></td>
+    <td><a href= '/faculty/professors/civ/'>{{ professors_civ }}</a></td>
+    <td><a href= '/faculty/professors/bs/'>{{ professors_bs }}</a></td>
+    <td><a href= '/faculty/professors/mba/'>{{ professors_mba }}</a></td>
+  </tr>
+  <tr>
+    <td><i><b>Associate Professors</b></i></td>
+    <td><a href= '/faculty/associate/'>{{ associate }} </a></td>
+    <td><a href= '/faculty/associate/eee/'>{{ associate_eee }}</a></td>
+    <td><a href= '/faculty/associate/ece/'>{{ associate_ece }}</a></td>
+    <td><a href= '/faculty/associate/cse/'>{{ associate_cse }}</a></td>
+    <td><a href= '/faculty/associate/it/'>{{ associate_it }}</a></td>
+    <td><a href= '/faculty/associate/mec/'>{{ associate_mec }}</a></td>
+    <td><a href= '/faculty/associate/civ/'>{{ associate_civ }}</a></td>
+    <td><a href= '/faculty/associate/bs/'>{{ associate_bs }}</a></td>
+    <td><a href= '/faculty/associate/mba/'>{{ associate_mba }}</a></td>
+  </tr>
+  <tr>
+    <td><i><b>Assistant Professors</b></i></td>
+    <td><a href= '/faculty/assisstant/'>{{ assisstant }}</a></td>
+    <td><a href= '/faculty/assisstant/eee/'>{{ assisstant_eee }}</a></td>
+    <td><a href= '/faculty/assisstant/ece/'>{{ assisstant_ece }}</a></td>
+    <td><a href= '/faculty/assisstant/cse/'>{{ assisstant_cse }}</a></td>
+    <td><a href= '/faculty/assisstant/it/'>{{ assisstant_it }}</a></td>
+    <td><a href= '/faculty/assisstant/mec/'>{{ assisstant_mec }}</a></td>
+    <td><a href= '/faculty/assisstant/civ/'>{{ assisstant_civ }}</a></td>
+    <td><a href= '/faculty/assisstant/bs/'>{{ assisstant_bs }}</a></td>
+    <td><a href= '/faculty/assisstant/mba/'>{{ assisstant_mba }}</a></td>
+  </tr>
+  <tr>
+    <td><i><b>Ratified Faculty</b></i></td>
+    <td><a href= '/faculty/ratified/'>{{ ratified }}</a></td>
+    <td><a href= '/faculty/ratified/eee/'>{{ ratified_eee }}</a></td>
+    <td><a href= '/faculty/ratified/ece/'>{{ ratified_ece }}</a></td>
+    <td><a href= '/faculty/ratified/cse/'>{{ ratified_cse }}</a></td>
+    <td><a href= '/faculty/ratified/it/'>{{ ratified_it }}</a></td>
+    <td><a href= '/faculty/ratified/mec/'>{{ ratified_mec }}</a></td>
+    <td><a href= '/faculty/ratified/civ/'>{{ ratified_civ }}</a></td>
+    <td><a href= '/faculty/ratified/bs/'>{{ ratified_bs }}</a></td>
+    <td><a href= '/faculty/ratified/mba/'>{{ ratified_mba }}</a></td>
+  </tr>
+  <tr>
+    <td><i><b>Non Ratified Faculty</b></i></td>
+    <td><a href= '/faculty/non ratified/'>{{ non_ratified }}</a></td>
+    <td><a href= '/faculty/non ratified/eee/'>{{ non_ratified_eee }}</a></td>
+    <td><a href= '/faculty/non ratified/ece/'>{{ non_ratified_ece }}</a></td>
+    <td><a href= '/faculty/non ratified/cse/'>{{ non_ratified_cse }}</a></td>
+    <td><a href= '/faculty/non ratified/it/'>{{ non_ratified_it }}</a></td>
+    <td><a href= '/faculty/non ratified/mec/'>{{ non_ratified_mec }}</a></td>
+    <td><a href= '/faculty/non ratified/civ/'>{{ non_ratified_civ }}</a></td>
+    <td><a href= '/faculty/non ratified/bs/'>{{ non_ratified_bs }}</a></td>
+    <td><a href= '/faculty/non ratified/mba/'>{{ non_ratified_mba }}</a></td>
+  </tr>
+</table>
+
+</body>
+</html>
+
+<!--
+  font-family: arial, sans-serif;
+  -->

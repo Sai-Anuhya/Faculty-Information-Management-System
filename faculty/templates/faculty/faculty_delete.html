@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action='.' method="POST"> {% csrf_token %}
+	<h2> Do u want to delete "{{ object.faculty_name }}"? </h2>
+	<p> <input type = 'submit' value = 'yes' />
+		<a href = '../'> Cancel </a> </p>
+</form>
+
+{% endblock %}
